@@ -7,7 +7,7 @@ public class LayoutJanela extends JFrame {
     }
     public void configurar(String titulo){
         setTitle(titulo);
-        ImageIcon icone = new ImageIcon("Logo.png");
+        ImageIcon icone = new ImageIcon("Logo 64.png");
         setIconImage(icone.getImage());
         getContentPane().setPreferredSize(new Dimension(1280,720));
         pack();
