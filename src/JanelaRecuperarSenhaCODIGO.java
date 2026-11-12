@@ -80,7 +80,7 @@ public class JanelaRecuperarSenhaCODIGO extends LayoutJanela{
                 } catch (ContaNaoEncontradaException ex){
                     JOptionPane.showMessageDialog(null, "Usuário não encontrado!","Atenção", JOptionPane.WARNING_MESSAGE);
                 } catch (CamposVaziosException ex){
-                    JOptionPane.showMessageDialog(null, "ex.getMessage()", "Atenção", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Atenção", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
