@@ -95,7 +95,11 @@ public class JanelaLogin extends LayoutJanela{
                 try{
                     jogador = central.recuperarJogadorPorLogin(login, senha);
                     dispose();
-                    new JanelaPrincipalJogo(jogador);
+                    if(jogador.getGrau()==Grau.ADM){
+                        new JanelaPrincipalJogoADM(jogador);
+                    } else{
+                        new JanelaPrincipalJogo(jogador);
+                    }
                 } catch (ContaNaoEncontradaException ex){
                     JOptionPane.showMessageDialog(null, ex.getMessage(),"Atenção", JOptionPane.WARNING_MESSAGE);
                 } catch (CamposVaziosException ex){
