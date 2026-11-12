@@ -8,11 +8,12 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.*;
 
 public class Mensageiro {
 
-    private static final String REMETENTE = "klebson.ifpb@gmail.com";
-    private static final String SENHA = "ufwkxhusodouynmd";
+    private static final String REMETENTE = "campeonatodeforca.ifpb@gmail.com";
+    private static final String SENHA = "uawgumgkgpdqdgui";
 
     public static void enviarMensagem(String destinatario, String assunto, String mensagem) {
         Properties props = new Properties();
@@ -35,10 +36,9 @@ public class Mensageiro {
             email.setText(mensagem);
 
             Transport.send(email);
-            System.out.println("E-mail enviado para " + destinatario);
-
+            JOptionPane.showMessageDialog(null,"Código Enviado com Sucesso!");
         } catch (MessagingException e) {
-            System.out.println("Falha ao enviar para " + destinatario + ": " + e.getMessage());
+            JOptionPane.showMessageDialog(null,"Falha ao enviar para " + destinatario + ": " + e.getMessage());
         }
     }
 }

@@ -23,6 +23,9 @@ public class Jogador {
     public String getSenha(){
         return senha;
     }
+    public void setSenha(String se){
+        senha = se;
+    }
     public String getEmail() {
         return email;
     }

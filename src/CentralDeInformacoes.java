@@ -23,6 +23,11 @@ public class CentralDeInformacoes {
         jogadores.add(j);
         return true;
     }
+
+    public void trocarSenhaJogador(Jogador j, String senha) throws CamposVaziosException {
+        recuperarJogadorPorEmail(j.getEmail()).setSenha(senha);
+    }
+
     public Jogador recuperarJogadorPorLogin(String login, String senha) throws ContaNaoEncontradaException, CamposVaziosException {
         if(login.isBlank() ||  senha.isBlank()){
             throw new CamposVaziosException();
@@ -34,13 +39,16 @@ public class CentralDeInformacoes {
         }
         throw new ContaNaoEncontradaException();
     }
-    public Jogador recuperarJogadorPorEmail(String email) {
+    public Jogador recuperarJogadorPorEmail(String email) throws ContaNaoEncontradaException, CamposVaziosException {
+        if(email.isBlank()){
+            throw new CamposVaziosException();
+        }
         for (int i = 0; i< jogadores.size(); i++){
             if (jogadores.get(i).getEmail().equals(email)) {
                 return jogadores.get(i);
             }
         }
-        return null;
+        throw new ContaNaoEncontradaException();
     }
 
     public ArrayList<Palavra> getPalavras() {

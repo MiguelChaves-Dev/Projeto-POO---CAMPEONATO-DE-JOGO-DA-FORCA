@@ -78,7 +78,8 @@ public class JanelaLogin extends LayoutJanela{
         btRecuperar.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
         btRecuperar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Ainda não Configurado!");
+                dispose();
+                new JanelaRecuperarSenhaEMAIL();
             }
         });
         add(btRecuperar);
@@ -108,6 +109,16 @@ public class JanelaLogin extends LayoutJanela{
             }
         });
         add(btEntrar);
+
+        JButton btSair = new JButton("Sair");
+        btSair.setBounds(10,660,80,50);
+        btSair.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
+        btSair.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        add(btSair);
     }
     public static void main(String[] args){
         new JanelaLogin();
