@@ -96,7 +96,7 @@ public class JanelaLogin extends LayoutJanela{
                 try{
                     jogador = central.recuperarJogadorPorLogin(login, senha);
                     dispose();
-                    if(jogador.getGrau()==Grau.ADM){
+                    if(jogador.getIsADM()==true){
                         new JanelaPrincipalJogoADM(jogador);
                     } else{
                         new JanelaPrincipalJogo(jogador);
