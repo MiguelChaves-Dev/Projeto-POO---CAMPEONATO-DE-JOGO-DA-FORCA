@@ -5,6 +5,12 @@ public class Palavra {
     private LocalDate data;
     private Dificuldade dificuldade;
 
+    public Palavra(String novaPalavra, String novaDica, Dificuldade novaDificuldade){
+        palavra = novaPalavra;
+        dica = novaDica;
+        dificuldade = novaDificuldade;
+    }
+
     public String getPalavra() {
         return palavra;
     }
@@ -37,11 +43,6 @@ public class Palavra {
         this.dificuldade = dificuldade;
     }
 
-    public Palavra(String novaPalavra, String novaDica, Dificuldade novaDificuldade){
-        palavra = novaPalavra;
-        dica = novaDica;
-        dificuldade = novaDificuldade;
-    }
 
     public boolean equals(Palavra p) {
         if (this.getPalavra().equals(p.getPalavra())){

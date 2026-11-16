@@ -1,3 +1,5 @@
+import Exceptions.CamposVaziosException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +9,7 @@ public class Forca {
     private char[] palavraOculta;
     private int erros = 0;
     private List<Character> letrasTentadas = new ArrayList<>();
-    private List<HistoricoPalpites> logsDaRodada = new ArrayList<>();
+    private ArrayList<HistoricoPalpites> logsDaRodada = new ArrayList<HistoricoPalpites>();
 
     public Forca(Palavra p){
         palavra = p;
@@ -18,7 +20,10 @@ public class Forca {
         }
     }
 
-    public boolean tentarLetra(char letra, Jogador jogadorDaVez){
+    public boolean tentarLetra(char letra, Jogador jogadorDaVez) throws CamposVaziosException {
+        if(String.valueOf(letra).isBlank()){
+            throw new CamposVaziosException();
+        }
         letra = Character.toUpperCase(letra);
 
         if (letrasTentadas.contains(letra)){
@@ -120,7 +125,7 @@ public class Forca {
     public List<Character> getLetrasTentadas() {
         return letrasTentadas;
     }
-    public List<HistoricoPalpites> getLogsDaRodada() {
+    public ArrayList<HistoricoPalpites> getLogsDaRodada() {
         return logsDaRodada;
     }
 }

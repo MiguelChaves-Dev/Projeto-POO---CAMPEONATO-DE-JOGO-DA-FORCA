@@ -101,10 +101,8 @@ public class JanelaLogin extends LayoutJanela{
                     } else{
                         new JanelaPrincipalJogo(jogador);
                     }
-                } catch (ContaNaoEncontradaException ex){
+                } catch (ContaNaoEncontradaException | CamposVaziosException ex){
                     JOptionPane.showMessageDialog(null, ex.getMessage(),"Atenção", JOptionPane.WARNING_MESSAGE);
-                } catch (CamposVaziosException ex){
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Atenção", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

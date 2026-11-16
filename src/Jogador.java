@@ -1,11 +1,14 @@
+import java.util.ArrayList;
+
 public class Jogador {
     private String login;
     private String senha;
     private String email;
     private Boolean isADM;
+    private ArrayList<Palavra> palavrasJogadas = new ArrayList<>();
     private int qntVitoria;
     private int qntDerrota;
-    private int pontuacao;
+    private int pontuacaoSolo;
 
     public Jogador(String no, String em, String se, Boolean adm) {
         login = no;
@@ -14,13 +17,8 @@ public class Jogador {
         isADM = adm;
     }
 
-    public void somarPontuacao(boolean ganhou, int pont){
-        if(ganhou){
-            qntVitoria++;
-        } else {
-            qntDerrota++;
-        }
-        pontuacao += pont;
+    public void somarPontuacaoSolo(int pont){
+        pontuacaoSolo += pont;
     }
 
     public Boolean getIsADM(){
@@ -36,10 +34,16 @@ public class Jogador {
     public String getSenha(){
         return senha;
     }
-    public void setSenha(String se){
-        senha = se;
-    }
     public String getEmail() {
         return email;
+    }
+    public ArrayList<Palavra> getPalavrasJogadas(){
+        return palavrasJogadas;
+    }
+    public void adicionarPalavraJogada(Palavra p){
+        palavrasJogadas.add(p);
+    }
+    public void setSenha(String se){
+        senha = se;
     }
 }

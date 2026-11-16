@@ -26,7 +26,7 @@ public class Main {
                     String senha = input.nextLine();
                     System.out.print("Insira o Email do Jogador: ");
                     String email = input.nextLine();
-                    Jogador novoJogador = new Jogador(nome, email, senha, Grau.USUARIO);
+                    Jogador novoJogador = new Jogador(nome, email, senha, false);
                     if (central.adicionarJogador(novoJogador)){
                         persistencia.salvarCentral(central);
                         System.out.println("Jogador adicionado com sucesso!");

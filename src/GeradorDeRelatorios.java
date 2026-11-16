@@ -32,7 +32,7 @@ public class GeradorDeRelatorios {
 	                    documento.add(new Paragraph(
 	                        "Login: " + j.getLogin()
 	                        + " | E-mail: " + j.getEmail()
-							+ " | Nível Admistrativo: " + j.getGrau()));
+							+ " | ADM: " + j.getIsADM()));
 	                 }
 	            }
 	

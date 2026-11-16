@@ -87,7 +87,7 @@ public class JanelaCadastroADM extends LayoutJanela{
                 if(login.isBlank() || email.isBlank() || senha.isBlank()){
                     throw new CamposVaziosException();
                 }
-                if (!central.adicionarJogador(new Jogador(login, email, senha, Grau.ADM))){
+                if (!central.adicionarJogador(new Jogador(login, email, senha, true))){
                     throw new ContaRepetidaException();
                 }
                 persistencia.salvarCentral(central);

@@ -32,6 +32,12 @@ public class JanelaModoDeJogo extends LayoutJanela{
         JButton btSolo = new JButton("Modo Solo");
         btSolo.setBounds(430,295,195,221);
         btSolo.setFont(new Font("Comic Sans MS", Font.BOLD, 17));
+        btSolo.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new JanelaDificuldade(jogador);
+            }
+        });
         add(btSolo);
 
         JButton btComp = new JButton("Modo Competitivo");

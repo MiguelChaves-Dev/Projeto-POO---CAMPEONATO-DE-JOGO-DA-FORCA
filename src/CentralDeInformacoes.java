@@ -1,10 +1,22 @@
 import Exceptions.CamposVaziosException;
 import Exceptions.ContaNaoEncontradaException;
+import Exceptions.PalavrasIndisponiveisException;
 
+import javax.swing.*;
 import java.util.ArrayList;
 public class CentralDeInformacoes {
     ArrayList<Jogador> jogadores = new ArrayList<Jogador> ();
     ArrayList<Palavra> palavras = new ArrayList<Palavra>();
+    ArrayList<Partida> partidas = new ArrayList<Partida>();
+    public boolean adicionarPartida(Partida p){
+        for(int i = 0; i < partidas.size(); i++){
+            if(partidas.get(i).equals(p)){
+                return false;
+            }
+        }
+        partidas.add(p);
+        return true;
+    }
 
     public ArrayList<Jogador> getTodosJogadores() {
         return jogadores;
@@ -63,6 +75,17 @@ public class CentralDeInformacoes {
         }
         palavras.add(p);
         return true;
+    }
+
+    public Palavra sortearPalavra(Jogador j, Dificuldade d) throws PalavrasIndisponiveisException {
+        for(int i = 0; i < palavras.size();i++){
+            if(!j.getPalavrasJogadas().contains(palavras.get(i).getPalavra())){
+                if (palavras.get(i).getDificuldade() == d){
+                    return palavras.get(i);
+                }
+            }
+        }
+        throw new PalavrasIndisponiveisException();
     }
 
     public Palavra recuperarPalavra(String palavra){

@@ -94,7 +94,7 @@ public class JanelaCadastroUsuario extends LayoutJanela{
                 if(login.isBlank() || email.isBlank() || senha.isBlank()){
                     throw new CamposVaziosException();
                 }
-                if (!central.adicionarJogador(new Jogador(login, email, senha, Grau.USUARIO))){
+                if (!central.adicionarJogador(new Jogador(login, email, senha, false))){
                     throw new ContaRepetidaException();
                 }
                 persistencia.salvarCentral(central);

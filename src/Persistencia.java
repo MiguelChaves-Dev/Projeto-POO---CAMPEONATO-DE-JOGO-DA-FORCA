@@ -12,8 +12,9 @@ public class Persistencia {
                 CentralDeInformacoes.class,
                 Jogador.class,
                 Palavra.class,
-                Grau.class,
-                Dificuldade.class
+                Partida.class,
+                Dificuldade.class,
+                HistoricoPalpites.class
         });
     }
     public void salvarCentral(CentralDeInformacoes central){
