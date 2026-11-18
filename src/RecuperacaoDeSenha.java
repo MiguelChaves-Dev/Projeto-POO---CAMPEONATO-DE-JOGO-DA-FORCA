@@ -10,6 +10,7 @@ public class RecuperacaoDeSenha {
         return codigo;
     }
 
+    //Gera um codigo aleatório de 5 digitos
     public void gerarCodigo(){
         SecureRandom random = new SecureRandom();
         String codigoGerado = "";
@@ -19,6 +20,8 @@ public class RecuperacaoDeSenha {
         }
         codigo = codigoGerado;
     }
+
+    //Verifica se o código inserido pelo jogador é o mesmo que foi gerado, se sim retorna true, se não retorna false
     public boolean testarCodigo(String codJogador) throws CamposVaziosException {
         if (codJogador.isBlank()) {
             throw new CamposVaziosException();

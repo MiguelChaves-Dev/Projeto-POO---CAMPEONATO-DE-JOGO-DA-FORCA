@@ -10,10 +10,10 @@ public class Partida {
     private ArrayList<HistoricoPalpites> logsOperacoes = new ArrayList<>();
     private int pontosJogador1;
     private int pontosJogador2;
-    private String resultado; // Ex: "VITORIA", "DERROTA", "EMPATE"
+    private String resultado;
 
     public Partida() {
-        this.dataHora = LocalDateTime.now(); // Já registra a data e hora automaticamente
+        this.dataHora = LocalDateTime.now();
     }
 
     public Partida(Jogador jogador, Palavra palavra, Dificuldade dificuldade,

@@ -17,6 +17,8 @@ public class Persistencia {
                 HistoricoPalpites.class
         });
     }
+
+    //Verifica se existe um arquivo .xml que salva as informações para poder recuperá-la e salvar as iformações da central, caso não exista, ele cria um novo arquivo e salva a central nele
     public void salvarCentral(CentralDeInformacoes central){
         String xml = xstream.toXML(central);
         try {
@@ -31,6 +33,7 @@ public class Persistencia {
         }
     }
 
+    //Tenta recuperar uma central ja existente, caso não exista, ele cria uma nova Central
     public CentralDeInformacoes recuperarCentral(){
         if (arquivo.exists()){
             return (CentralDeInformacoes) xstream.fromXML(arquivo);

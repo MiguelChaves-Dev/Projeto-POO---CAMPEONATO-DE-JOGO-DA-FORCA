@@ -20,6 +20,7 @@ public class Forca {
         }
     }
 
+    //Verifica e altera a palavraOculta caso o jogador tenha acertado um palpite
     public boolean tentarLetra(char letra, Jogador jogadorDaVez) throws CamposVaziosException {
         if(String.valueOf(letra).isBlank()){
             throw new CamposVaziosException();
@@ -46,6 +47,7 @@ public class Forca {
         return acertou;
     }
 
+    //Verifica se a palavraOculta ja foi descoberta
     public boolean isVenceu(){
         for(char c : palavraOculta){
             if(c == '_'){
@@ -55,10 +57,12 @@ public class Forca {
         return true;
     }
 
+    //Verifica se o jogador ja ultrapassou o limite de erros
     public boolean isPerdeu(){
         return erros >= 6;
     }
 
+    //Calcula a pontuação do jogador dependendo do seu desempenho na partida
     public int calcularPontuacao(){
         if (isPerdeu()){
             return -100;
@@ -106,10 +110,12 @@ public class Forca {
         return pontuacaoFinal;
     }
 
+    //Retorna a palavra sorteada na criação da Forca
     public Palavra getPalavra(){
         return palavra;
     }
 
+    //Retorna a palavra sorteada mas de forma oculta
     public String getPalavraOculta() {
         StringBuilder sb = new StringBuilder();
         for (char c : palavraOculta) {
@@ -118,13 +124,17 @@ public class Forca {
         return sb.toString().trim();
     }
 
+    //Retorna a quantidade de erros que o jogador ja cometeu
     public int getErros() {
         return erros;
     }
 
+    //Retorna uma lista com todos os palpites jogados
     public List<Character> getLetrasTentadas() {
         return letrasTentadas;
     }
+    //Retorna um arraylist com todos os palpites jogados
+
     public ArrayList<HistoricoPalpites> getLogsDaRodada() {
         return logsDaRodada;
     }

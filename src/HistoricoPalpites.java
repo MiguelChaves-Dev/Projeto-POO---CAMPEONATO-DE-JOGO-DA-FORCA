@@ -9,14 +9,17 @@ public class HistoricoPalpites {
         this.loginJogador = loginJogador;
     }
 
+    //Retorna a letra do palpite
     public char getLetra() {
         return letra;
     }
 
+    //Retorna um booleano que diz se o jogador acertou(true) ou errou(false) o palpite
     public boolean isAcertou() {
         return acertou;
     }
 
+    //Retorna a string que representa o jogador que fez o palpite
     public String getLoginJogador() {
         return loginJogador;
     }

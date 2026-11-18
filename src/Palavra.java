@@ -11,34 +11,42 @@ public class Palavra {
         dificuldade = novaDificuldade;
     }
 
+    //Retorna a palavra
     public String getPalavra() {
         return palavra;
     }
 
+    //Define qual será a palavra
     public void setPalavra(String palavra) {
         this.palavra = palavra;
     }
 
+    //Retorna a dica referente a palavra
     public String getDica() {
         return dica;
     }
 
+    //Define a dica referente a palavra
     public void setDica(String dica) {
         this.dica = dica;
     }
 
+    //Retorna a data em que a palavra foi cadastrada
     public LocalDate getData() {
         return data;
     }
 
+    //Define a data que a palavra foi cadastrada
     public void setData(LocalDate data) {
         this.data = data;
     }
 
+    //Retorna a dificuldade da palavra(FACIL, MEDIO, DIFICIL) <- (São opções do Enum: Dificuldade)
     public Dificuldade getDificuldade() {
         return dificuldade;
     }
 
+    //Define a dificuldade da palavra
     public void setDificuldade(Dificuldade dificuldade) {
         this.dificuldade = dificuldade;
     }

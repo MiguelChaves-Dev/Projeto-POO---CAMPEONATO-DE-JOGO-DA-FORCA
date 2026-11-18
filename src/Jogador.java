@@ -17,33 +17,47 @@ public class Jogador {
         isADM = adm;
     }
 
+    //Soma a pontuação da partida a pontuação ja salva do jogador
     public void somarPontuacaoSolo(int pont){
         pontuacaoSolo += pont;
     }
 
+    //Retorna um booleano, se o jogador for ADM(true) ou não(false)
     public Boolean getIsADM(){
         return isADM;
     }
-    public String toString() {
-        return login;
-    }
 
+    //Retorna o login do jogador
     public String getLogin() {
         return login;
     }
+
+    //Retorna a senha do jogador
     public String getSenha(){
         return senha;
     }
+
+    //Retorna o email do jogador
     public String getEmail() {
         return email;
     }
+
+    //Retorna um arraylist que representa as palavras ja jogadas pelo jogador
     public ArrayList<Palavra> getPalavrasJogadas(){
         return palavrasJogadas;
     }
+
+    //Adiciona as palavras ja jogadas ao arraylist de palavrasJogadas
     public void adicionarPalavraJogada(Palavra p){
         palavrasJogadas.add(p);
     }
+
+    //Define uma nova senha para o jogador, recurso utilizado somente na parte de recuperação de senha
     public void setSenha(String se){
         senha = se;
+    }
+
+    public String toString() {
+        return login;
     }
 }
