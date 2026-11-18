@@ -5,7 +5,7 @@ public class Jogador {
     private String senha;
     private String email;
     private Boolean isADM;
-    private ArrayList<Palavra> palavrasJogadas = new ArrayList<>();
+    private ArrayList<Palavra> palavrasJogadas = new ArrayList<Palavra>();
     private int qntVitoria;
     private int qntDerrota;
     private int pontuacaoSolo;

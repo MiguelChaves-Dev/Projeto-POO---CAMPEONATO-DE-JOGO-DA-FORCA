@@ -23,7 +23,7 @@ public class JanelaJogo extends LayoutJanela{
         dificuldade = d;
         try {
             forca = new Forca(central.sortearPalavra(jogador, dificuldade));
-        } catch (PalavrasIndisponiveisException e) {
+        } catch (PalavrasIndisponiveisException | CamposVaziosException e) {
             dispose();
             JOptionPane.showMessageDialog(null, e.getMessage(), "Atenção", JOptionPane.WARNING_MESSAGE);
             new JanelaDificuldade(jogador);
@@ -128,7 +128,7 @@ public class JanelaJogo extends LayoutJanela{
         );
 
         jogadorDaCentral.somarPontuacaoSolo(pontos);
-        jogadorDaCentral.adicionarPalavraJogada(forca.getPalavra());
+        jogadorDaCentral.getPalavrasJogadas().add(forca.getPalavra());
         central.adicionarPartida(partida);
         persistencia.salvarCentral(central);
 

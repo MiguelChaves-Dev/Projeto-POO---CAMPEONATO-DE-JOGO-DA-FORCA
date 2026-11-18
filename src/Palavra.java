@@ -44,11 +44,18 @@ public class Palavra {
     }
 
 
-    public boolean equals(Palavra p) {
-        if (this.getPalavra().equals(p.getPalavra())){
+    public boolean equals(Object obj) {
+        if (this == obj) {
             return true;
         }
-        return false;
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Palavra outra = (Palavra) obj;
+        if (this.palavra == null || outra.palavra == null) {
+            return false;
+        }
+        return this.palavra.equalsIgnoreCase(outra.palavra);
     }
     public String toString(){
         return palavra + " -  Dica: " + dica;

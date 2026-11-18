@@ -4,6 +4,8 @@ import Exceptions.PalavrasIndisponiveisException;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Random;
+
 public class CentralDeInformacoes {
     ArrayList<Jogador> jogadores = new ArrayList<Jogador> ();
     ArrayList<Palavra> palavras = new ArrayList<Palavra>();
@@ -77,15 +79,32 @@ public class CentralDeInformacoes {
         return true;
     }
 
-    public Palavra sortearPalavra(Jogador j, Dificuldade d) throws PalavrasIndisponiveisException {
-        for(int i = 0; i < palavras.size();i++){
-            if(!j.getPalavrasJogadas().contains(palavras.get(i).getPalavra())){
-                if (palavras.get(i).getDificuldade() == d){
-                    return palavras.get(i);
-                }
+    public Palavra sortearPalavra(Jogador j, Dificuldade d) throws PalavrasIndisponiveisException, CamposVaziosException {
+        Jogador jogadorAtual = recuperarJogadorPorEmail(j.getEmail());
+        if (jogadorAtual == null) {
+            jogadorAtual = j;
+        }
+
+        ArrayList<Palavra> disponiveis = new ArrayList<>();
+
+        for (int i = 0; i < palavras.size(); i++) {
+            Palavra p = palavras.get(i);
+
+            // Verifica se é da dificuldade escolhida E se o jogador ainda NÃO jogou essa palavra
+            if (p.getDificuldade() == d && !jogadorAtual.getPalavrasJogadas().contains(p)) {
+                disponiveis.add(p);
             }
         }
-        throw new PalavrasIndisponiveisException();
+
+        // Se nenhuma palavra sobrou, lança a exceção
+        if (disponiveis.isEmpty()) {
+            throw new PalavrasIndisponiveisException();
+        }
+
+        // Sorteia aleatoriamente entre as palavras inéditas filtradas
+        Random random = new Random();
+        int indiceSorteado = random.nextInt(disponiveis.size());
+        return disponiveis.get(indiceSorteado);
     }
 
     public Palavra recuperarPalavra(String palavra){
