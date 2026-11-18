@@ -43,11 +43,23 @@ public class JanelaDificuldade extends LayoutJanela{
         JButton btMedio = new JButton("Médio");
         btMedio.setBounds(543,295,195,221);
         btMedio.setFont(new Font("Comic Sans MS", Font.BOLD, 17));
+        btMedio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new JanelaJogo(jogador, Dificuldade.MEDIO);
+            }
+        });
         add(btMedio);
 
         JButton btDificil = new JButton("Difícil");
         btDificil.setBounds(758, 295, 195, 221);
         btDificil.setFont(new Font("Comic Sans MS", Font.BOLD, 17));
+        btDificil.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new JanelaJogo(jogador, Dificuldade.DIFICIL);
+            }
+        });
         add(btDificil);
 
         JButton btVoltar = new JButton("Voltar");

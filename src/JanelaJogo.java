@@ -39,30 +39,39 @@ public class JanelaJogo extends LayoutJanela{
         lblPalavraOculta = new JLabel(forca.getPalavraOculta(), SwingConstants.CENTER);
         lblPalavraOculta.setFont(new Font("Comic Sans MS", Font.BOLD, 52));
         lblPalavraOculta.setForeground(roxo);
-        lblPalavraOculta.setBounds(280, 60, 950, 120);
+        lblPalavraOculta.setBounds(240, 60, 800, 80);
         add(lblPalavraOculta);
 
         lblErros = new JLabel("Erros: 0 / 6", SwingConstants.CENTER);
         lblErros.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
         lblErros.setForeground(Color.RED);
-        lblErros.setBounds(280, 190, 950, 40);
+        lblErros.setBounds(240, 140, 800, 80);
         add(lblErros);
 
         JLabel lblPalpite = new JLabel("PALPITE:");
         lblPalpite.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
         lblPalpite.setForeground(roxo);
-        lblPalpite.setBounds(500, 320, 130, 36);
+        lblPalpite.setBounds(430, 320, 120, 36);
         add(lblPalpite);
 
         txtPalpite = new JTextField();
         txtPalpite.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-        txtPalpite.setBounds(640, 320, 280, 36);
+        txtPalpite.setBounds(570, 320, 280, 36);
         add(txtPalpite);
     }
 
     private void criarBotao(){
+        JButton btDica = new JButton("Dica");
+        btDica.setBounds(430,380,126,45);
+        btDica.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
+        btDica.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,forca.getPalavra().getDica(),"Dica:",JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+        add(btDica);
         JButton btEnviar = new JButton("Chutar");
-        btEnviar.setBounds(722, 440, 126, 45);
+        btEnviar.setBounds(722,380,126,45);
         btEnviar.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
         btEnviar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
