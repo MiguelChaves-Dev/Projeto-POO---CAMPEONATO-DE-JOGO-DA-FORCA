@@ -1,5 +1,7 @@
 import Exceptions.CamposVaziosException;
+import Exceptions.ContaNaoEncontradaException;
 import Exceptions.PalavrasIndisponiveisException;
+import Exceptions.SenhaIncorretaException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -111,9 +113,7 @@ public class JanelaPrepararCompetitivo extends LayoutJanela{
                     Jogador jogador2 = central.recuperarJogadorPorLogin(loginAdversario,senhaDigitada);
 
                     if (jogador2 == null || !jogador2.getSenha().equals(senhaDigitada)) {
-                        JOptionPane.showMessageDialog(null, "Senha do adversário incorreta!", "Erro de Autenticação", JOptionPane.ERROR_MESSAGE);
-                        txtSenhaAdversario.setText("");
-                        return;
+                        throw new SenhaIncorretaException();
                     }
 
                     // Tenta sortear as 2 palavras antes de fechar a tela
@@ -124,10 +124,8 @@ public class JanelaPrepararCompetitivo extends LayoutJanela{
                     dispose();
                     new JanelaJogoCompetitivo(jogador1, jogador2, difEscolhida, palavrasDuelo);
 
-                } catch (CamposVaziosException ex) {
+                } catch (CamposVaziosException | PalavrasIndisponiveisException | SenhaIncorretaException ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage(), "Atenção", JOptionPane.WARNING_MESSAGE);
-                } catch (PalavrasIndisponiveisException ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage(), "Palavras Insuficientes", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

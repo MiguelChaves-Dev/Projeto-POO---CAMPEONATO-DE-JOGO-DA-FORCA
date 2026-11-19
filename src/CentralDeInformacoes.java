@@ -12,6 +12,7 @@ public class CentralDeInformacoes {
     ArrayList<Palavra> palavras = new ArrayList<Palavra>();
     ArrayList<Partida> partidas = new ArrayList<Partida>();
 
+
     //Adiciona um objeto do tipo Partida na Central de Informações podendo salva-la
     public boolean adicionarPartida(Partida p){
         for(int i = 0; i < partidas.size(); i++){
@@ -21,6 +22,11 @@ public class CentralDeInformacoes {
         }
         partidas.add(p);
         return true;
+    }
+
+    //Retorna as partidas salvas na central
+    public ArrayList<Partida> getPartidas(){
+        return partidas;
     }
 
     //Retorna um arraylist com todos os jogadores cadastrados

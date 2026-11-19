@@ -36,7 +36,8 @@ public class JanelaPrincipalJogo extends LayoutJanela{
         btEstatistica.setBounds(1200, 20, 60, 60);
         btEstatistica.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,"Aqui o usuário (nesse caso o usuário: "+ jogador.getLogin() + " ) verá suas estatísticas!");
+                dispose();
+                new JanelaEstatisticasJogador(jogador);
             }
         });
         add(btEstatistica);
