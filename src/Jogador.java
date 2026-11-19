@@ -4,11 +4,13 @@ public class Jogador {
     private String login;
     private String senha;
     private String email;
-    private Boolean isADM;
+    private boolean isADM;
+    private boolean isAtivo = true;
     private ArrayList<Palavra> palavrasJogadas = new ArrayList<Palavra>();
     private int qntVitoria;
     private int qntDerrota;
     private int pontuacaoSolo;
+    private int pontuacaoComp;
 
     public Jogador(String no, String em, String se, Boolean adm) {
         login = no;
@@ -17,14 +19,23 @@ public class Jogador {
         isADM = adm;
     }
 
-    //Soma a pontuação da partida a pontuação ja salva do jogador
+    //Soma a pontuação da partida Solo a pontuação ja salva do jogador
     public void somarPontuacaoSolo(int pont){
         pontuacaoSolo += pont;
+    }
+
+    //Soma a pontuação da partida Competitiva a pontuação ja salva do jogador
+    public void somarPontuacaoComp(int pont){
+        pontuacaoComp += pont;
     }
 
     //Retorna um booleano, se o jogador for ADM(true) ou não(false)
     public Boolean getIsADM(){
         return isADM;
+    }
+
+    public Boolean getIsAtivo(){
+        return isAtivo;
     }
 
     //Retorna o login do jogador
@@ -47,6 +58,16 @@ public class Jogador {
         return palavrasJogadas;
     }
 
+    //Retorna a pontuação do jogador no modo Solo
+    public int getPontuacaoSolo(){
+        return pontuacaoSolo;
+    }
+
+    //Retorna a pontuação do jogador no modo Competitivo
+    public int getPontuacaoComp() {
+        return pontuacaoComp;
+    }
+
     //Adiciona as palavras ja jogadas ao arraylist de palavrasJogadas
     public void adicionarPalavraJogada(Palavra p){
         palavrasJogadas.add(p);
@@ -55,6 +76,10 @@ public class Jogador {
     //Define uma nova senha para o jogador, recurso utilizado somente na parte de recuperação de senha
     public void setSenha(String se){
         senha = se;
+    }
+
+    public void setIsAtivo(Boolean is){
+        isAtivo = is;
     }
 
     public String toString() {

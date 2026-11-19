@@ -4,6 +4,7 @@ import Exceptions.PalavrasIndisponiveisException;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class CentralDeInformacoes {
@@ -108,6 +109,40 @@ public class CentralDeInformacoes {
         Random random = new Random();
         int indiceSorteado = random.nextInt(disponiveis.size());
         return disponiveis.get(indiceSorteado);
+    }
+
+    public ArrayList<Palavra> sortearPalavrasCompetitivo(Jogador j1, Jogador j2, Dificuldade d) throws PalavrasIndisponiveisException, CamposVaziosException {
+        Jogador jog1 = recuperarJogadorPorEmail(j1.getEmail());
+        Jogador jog2 = recuperarJogadorPorEmail(j2.getEmail());
+
+        // 1. Filtra todas as palavras daquela dificuldade que NENHUM dos dois jogou
+        ArrayList<Palavra> candidatas = new ArrayList<>();
+        for (Palavra p : palavras) {
+            if (p.getDificuldade() == d
+                    && !jog1.getPalavrasJogadas().contains(p)
+                    && !jog2.getPalavrasJogadas().contains(p)) {
+                candidatas.add(p);
+            }
+        }
+
+        // 2. Procura duas palavras diferentes que tenham exatamente o mesmo número de letras
+        Collections.shuffle(candidatas); // Embaralha a lista
+        for (int i = 0; i < candidatas.size(); i++) {
+            for (int k = i + 1; k < candidatas.size(); k++) {
+                Palavra p1 = candidatas.get(i);
+                Palavra p2 = candidatas.get(k);
+
+                if (p1.getPalavra().length() == p2.getPalavra().length()) {
+                    ArrayList<Palavra> parSorteado = new ArrayList<>();
+                    parSorteado.add(p1);
+                    parSorteado.add(p2);
+                    return parSorteado;
+                }
+            }
+        }
+
+        // Se não achou nenhum par com o mesmo tamanho, lança a exceção
+        throw new PalavrasIndisponiveisException();
     }
 
     //Retorna uma Palavra(Classe) caso a palavra(String) seja igual

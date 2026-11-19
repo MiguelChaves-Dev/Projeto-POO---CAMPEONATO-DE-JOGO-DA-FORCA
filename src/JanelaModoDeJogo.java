@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class JanelaModoDeJogo extends LayoutJanela{
     private Jogador jogador;
     public JanelaModoDeJogo(Jogador j){
-        super("Campeonato de Forca");
+        super("Campeonato de Forca - Solo");
         jogador = j;
         criarTexto();
         criarBotao();
@@ -43,6 +43,12 @@ public class JanelaModoDeJogo extends LayoutJanela{
         JButton btComp = new JButton("Modo Competitivo");
         btComp.setBounds(655,295,195,221);
         btComp.setFont(new Font("Comic Sans MS", Font.BOLD, 17));
+        btComp.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new JanelaPrepararCompetitivo(jogador);
+            }
+        });
         add(btComp);
 
         JButton btVoltar = new JButton("Voltar");
