@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class Jogador {
@@ -7,8 +8,7 @@ public class Jogador {
     private boolean isADM;
     private boolean isAtivo = true;
     private ArrayList<Palavra> palavrasJogadas = new ArrayList<Palavra>();
-    private int qntVitoria;
-    private int qntDerrota;
+    private String caminhoIconeJogador = "Logo 64.png";
     private int pontuacaoSolo;
     private int pontuacaoComp;
 
@@ -36,6 +36,14 @@ public class Jogador {
 
     public Boolean getIsAtivo(){
         return isAtivo;
+    }
+
+    //Retorna o icone do jogador
+    public ImageIcon getIconeJogador(){
+        if(caminhoIconeJogador != null){
+            return new ImageIcon(caminhoIconeJogador);
+        }
+        return null;
     }
 
     //Retorna o login do jogador

@@ -170,6 +170,7 @@ public class JanelaEstatisticasJogador extends LayoutJanela{
     private void criarBotao(){
         JButton btRanque = new JButton("Ver Ranques");
         btRanque.setBounds(1040,215,160,38);
+        btRanque.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
         btRanque.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -180,6 +181,7 @@ public class JanelaEstatisticasJogador extends LayoutJanela{
 
         JButton btVoltar = new JButton("Voltar");
         btVoltar.setBounds(10,660,80,50);
+        btVoltar.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
         btVoltar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();

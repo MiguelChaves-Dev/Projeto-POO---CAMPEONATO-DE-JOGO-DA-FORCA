@@ -37,7 +37,7 @@ public class CentralDeInformacoes {
     //Adiciona um objeto do tipo Jogador na Central de Informações podendo salva-lo
     public boolean adicionarJogador(Jogador j) {
         for(int i = 0; i < jogadores.size();i++) {
-            if (jogadores.get(i).getEmail().equals(j.getEmail()) || jogadores.get(i).getLogin().equals(j.getLogin())) {
+            if (jogadores.get(i).getEmail().equalsIgnoreCase(j.getEmail()) || jogadores.get(i).getLogin().equalsIgnoreCase(j.getLogin())) {
                 return false;
             }
         }
@@ -56,7 +56,7 @@ public class CentralDeInformacoes {
             throw new CamposVaziosException();
         }
         for(int i = 0; i < jogadores.size(); i++){
-            if(jogadores.get(i).getLogin().equals(login) && jogadores.get(i).getSenha().equals(senha)){
+            if(jogadores.get(i).getLogin().equalsIgnoreCase(login) && jogadores.get(i).getSenha().equals(senha)){
                 return jogadores.get(i);
             }
         }
@@ -69,7 +69,7 @@ public class CentralDeInformacoes {
             throw new CamposVaziosException();
         }
         for (int i = 0; i< jogadores.size(); i++){
-            if (jogadores.get(i).getEmail().equals(email)) {
+            if (jogadores.get(i).getEmail().equalsIgnoreCase(email)) {
                 return jogadores.get(i);
             }
         }
@@ -154,7 +154,7 @@ public class CentralDeInformacoes {
     //Retorna uma Palavra(Classe) caso a palavra(String) seja igual
     public Palavra recuperarPalavra(String palavra){
         for (int i = 0;  i< palavras.size(); i++){
-            if (palavras.get(i).getPalavra().equals(palavra)){
+            if (palavras.get(i).getPalavra().equalsIgnoreCase(palavra)){
                 return palavras.get(i);
             }
         }

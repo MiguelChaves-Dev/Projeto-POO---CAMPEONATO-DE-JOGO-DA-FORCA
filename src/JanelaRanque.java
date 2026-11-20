@@ -55,7 +55,6 @@ public class JanelaRanque extends LayoutJanela {
             public boolean isCellEditable(int row, int column) { return false; }
         };
 
-        // Copia a lista de jogadores e ordena do maior para o menor em pontosSolo
         ArrayList<Jogador> listaSolo = new ArrayList<>(central.getTodosJogadores());
         Collections.sort(listaSolo, new Comparator<Jogador>() {
             public int compare(Jogador j1, Jogador j2) {
@@ -65,7 +64,8 @@ public class JanelaRanque extends LayoutJanela {
 
         for (int i = 0; i < listaSolo.size(); i++) {
             Jogador j = listaSolo.get(i);
-            Object[] linha = {(i + 1) + "º", j.getLogin(), j.getPontuacaoSolo() + " pts"};
+            // Passa o objeto 'j' na coluna 1 em vez de concatenar String
+            Object[] linha = {(i + 1) + "º", j, j.getPontuacaoSolo() + " pts"};
             modeloSolo.addRow(linha);
         }
 
@@ -79,7 +79,6 @@ public class JanelaRanque extends LayoutJanela {
             public boolean isCellEditable(int row, int column) { return false; }
         };
 
-        // Copia a lista de jogadores e ordena do maior para o menor em pontosCompetitivo
         ArrayList<Jogador> listaComp = new ArrayList<>(central.getTodosJogadores());
         Collections.sort(listaComp, new Comparator<Jogador>() {
             public int compare(Jogador j1, Jogador j2) {
@@ -89,7 +88,8 @@ public class JanelaRanque extends LayoutJanela {
 
         for (int i = 0; i < listaComp.size(); i++) {
             Jogador j = listaComp.get(i);
-            Object[] linha = {(i + 1) + "º", j.getLogin(), j.getPontuacaoComp() + " pts"};
+            // Passa o objeto 'j' na coluna 1 em vez de concatenar String
+            Object[] linha = {(i + 1) + "º", j, j.getPontuacaoComp() + " pts"};
             modeloComp.addRow(linha);
         }
 
@@ -102,16 +102,54 @@ public class JanelaRanque extends LayoutJanela {
     private JTable configurarTabela(DefaultTableModel modelo, Color corCabecalho) {
         JTable tabela = new JTable(modelo);
         tabela.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-        tabela.setRowHeight(32);
+        tabela.setRowHeight(36); // Aumentado levemente para o ícone respirar
         tabela.getTableHeader().setFont(new Font("Comic Sans MS", Font.BOLD, 17));
         tabela.getTableHeader().setBackground(corCabecalho);
         tabela.getTableHeader().setForeground(Color.WHITE);
 
+        // Renderer padrão centralizado para Posição (coluna 0) e Pontuação (coluna 2)
         DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
         centralizado.setHorizontalAlignment(SwingConstants.CENTER);
-        for (int i = 0; i < tabela.getColumnCount(); i++) {
-            tabela.getColumnModel().getColumn(i).setCellRenderer(centralizado);
-        }
+        tabela.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+        tabela.getColumnModel().getColumn(2).setCellRenderer(centralizado);
+
+        // Renderer especial para a coluna 1 ("Jogador"): Ícone + Login juntos
+        DefaultTableCellRenderer renderizadorJogador = new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                                                           boolean isSelected, boolean hasFocus, int row, int column) {
+
+                JLabel label = (JLabel) super.getTableCellRendererComponent(
+                        table, value, isSelected, hasFocus, row, column);
+
+                if (value instanceof Jogador) {
+                    Jogador jog = (Jogador) value;
+                    label.setText(jog.getLogin());
+
+                    ImageIcon iconeOriginal = jog.getIconeJogador();
+                    if (iconeOriginal != null && iconeOriginal.getImage() != null) {
+                        // Redimensiona a imagem (ex: "Logo 64.png") para 26x26px para caber na linha
+                        Image imgRedimensionada = iconeOriginal.getImage()
+                                .getScaledInstance(26, 26, Image.SCALE_SMOOTH);
+                        label.setIcon(new ImageIcon(imgRedimensionada));
+                    } else {
+                        label.setIcon(null);
+                    }
+
+                    label.setIconTextGap(10); // Distância entre o ícone e o nome
+                    label.setHorizontalAlignment(SwingConstants.LEFT);
+                    label.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 0)); // Margem esquerda
+                }
+                return label;
+            }
+        };
+        tabela.getColumnModel().getColumn(1).setCellRenderer(renderizadorJogador);
+
+        // Ajuste opcional de largura para dar mais espaço ao nome + ícone
+        tabela.getColumnModel().getColumn(0).setPreferredWidth(80);
+        tabela.getColumnModel().getColumn(1).setPreferredWidth(280);
+        tabela.getColumnModel().getColumn(2).setPreferredWidth(140);
+
         return tabela;
     }
 
