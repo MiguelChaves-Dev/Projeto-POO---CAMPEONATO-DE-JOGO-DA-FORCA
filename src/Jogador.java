@@ -76,6 +76,10 @@ public class Jogador {
         return pontuacaoComp;
     }
 
+    public void setCaminhoIconeJogador(String novoCaminho){
+        caminhoIconeJogador = novoCaminho;
+    }
+
     //Adiciona as palavras ja jogadas ao arraylist de palavrasJogadas
     public void adicionarPalavraJogada(Palavra p){
         palavrasJogadas.add(p);

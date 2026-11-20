@@ -35,7 +35,7 @@ public class JanelaEstatisticasJogador extends LayoutJanela{
     public void criarTexto(){
         Color roxo = new Color(110,70,200);
 
-        JLabel lblTitulo = new JLabel("ESTATÍSTICAS DE " + jogador.getLogin(), SwingConstants.CENTER);
+        JLabel lblTitulo = new JLabel("ESTATÍSTICAS DE " + jogador.getLogin().toUpperCase(), SwingConstants.CENTER);
         lblTitulo.setFont(new Font("Comic Sans MS", Font.BOLD,42));
         lblTitulo.setForeground(roxo);
         lblTitulo.setBounds(140,25,1000,55);
@@ -168,6 +168,17 @@ public class JanelaEstatisticasJogador extends LayoutJanela{
     }
 
     private void criarBotao(){
+        JButton btTrocar = new JButton("Trocar Ícone");
+        btTrocar.setBounds(870,215,160,38);
+        btTrocar.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
+        btTrocar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new MiniJanelaTrocarIcone(jogador);
+            }
+        });
+        add(btTrocar);
+
         JButton btRanque = new JButton("Ver Ranques");
         btRanque.setBounds(1040,215,160,38);
         btRanque.setFont(new Font("Comic Sans MS", Font.BOLD, 13));

@@ -33,7 +33,7 @@ public class JanelaPrincipalJogo extends LayoutJanela{
 
     private void criarBotao(){
         JButton btEstatistica = new JButton(jogador.getIconeJogador());
-        btEstatistica.setBounds(1200, 20, 60, 60);
+        btEstatistica.setBounds(1180, 20, 80, 80);
         btEstatistica.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
