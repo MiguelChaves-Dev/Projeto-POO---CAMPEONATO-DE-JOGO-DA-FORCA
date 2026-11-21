@@ -7,7 +7,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class GeradorDeRelatorios {
-	public static void gerarRelatorio(CentralDeInformacoes central) {
+	public static String gerarRelatorio(CentralDeInformacoes central) {
 	        Document documento = new Document();
 	
 	        try {
@@ -61,6 +61,7 @@ public class GeradorDeRelatorios {
 	                documento.close();
 	            }
 	        }
+		return null;
 	}
 
 }
