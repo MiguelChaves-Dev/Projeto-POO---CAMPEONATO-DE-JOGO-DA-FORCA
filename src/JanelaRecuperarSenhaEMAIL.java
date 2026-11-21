@@ -75,10 +75,8 @@ public class JanelaRecuperarSenhaEMAIL extends LayoutJanela{
                     Mensageiro.enviarMensagem(jogador.getEmail(), "Código de Recuperação de Senha", "Seu código de verificação é: " + recuperar.getCodigo());
                     dispose();
                     new JanelaRecuperarSenhaCODIGO(recuperar, jogador);
-                } catch (ContaNaoEncontradaException ex){
-                    JOptionPane.showMessageDialog(null, "Usuário não encontrado!","Atenção", JOptionPane.WARNING_MESSAGE);
-                } catch (CamposVaziosException ex){
-                    JOptionPane.showMessageDialog(null, "ex.getMessage()", "Atenção", JOptionPane.WARNING_MESSAGE);
+                } catch (ContaNaoEncontradaException | CamposVaziosException ex){
+                    JOptionPane.showMessageDialog(null, ex.getMessage(),"Atenção", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

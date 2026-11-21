@@ -33,6 +33,7 @@ public class MiniJanelaTrocarIcone extends LayoutJanela {
         btIconePadrao.setBounds(40,110,80,80);
         btIconePadrao.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Ícone alterado com sucesso!");
                 jogador.setCaminhoIconeJogador("Logo 64.png");
                 persistencia.salvarCentral(central);
             }
@@ -43,8 +44,13 @@ public class MiniJanelaTrocarIcone extends LayoutJanela {
         btIconePalhaco.setBounds(150,110,80,80);
         btIconePalhaco.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                jogador.setCaminhoIconeJogador("LogoPalhaço.png");
-                persistencia.salvarCentral(central);
+                if (jogador.getPontuacaoSolo() > 1000 || jogador.getPontuacaoComp() > 5){
+                    JOptionPane.showMessageDialog(null, "Ícone alterado com sucesso!");
+                    jogador.setCaminhoIconeJogador("LogoPalhaço.png");
+                    persistencia.salvarCentral(central);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Você não tem pontos o suficiente para utilizar esse icone!\nPontos nescessários:\nSolo: 1000pts\nCompetitivo: 5pts", "Pontos insuficientes!", JOptionPane.WARNING_MESSAGE);
+                }
             }
         });
         add(btIconePalhaco);
@@ -53,8 +59,13 @@ public class MiniJanelaTrocarIcone extends LayoutJanela {
         btIconeCoroa.setBounds(260,110,80,80);
         btIconeCoroa.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                jogador.setCaminhoIconeJogador("LogoCoroa.png");
-                persistencia.salvarCentral(central);
+                if (jogador.getPontuacaoSolo() > 2500 || jogador.getPontuacaoComp() > 10){
+                    JOptionPane.showMessageDialog(null, "Ícone alterado com sucesso!");
+                    jogador.setCaminhoIconeJogador("LogoCoroa.png");
+                    persistencia.salvarCentral(central);
+                } else {
+                    JOptionPane.showMessageDialog(null,"Você não tem pontos o suficiente para utilizar esse icone!\nPontos nescessários:\nSolo: 2500pts\nCompetitivo: 10pts", "Pontos insuficientes!", JOptionPane.WARNING_MESSAGE);
+                }
             }
         });
         add(btIconeCoroa);
@@ -63,8 +74,13 @@ public class MiniJanelaTrocarIcone extends LayoutJanela {
         btIconeBone.setBounds(370,110,80,80);
         btIconeBone.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                jogador.setCaminhoIconeJogador("LogoBoneDT.png");
-                persistencia.salvarCentral(central);
+                if (jogador.getPontuacaoSolo() > 5000 || jogador.getPontuacaoComp() > 20){
+                    JOptionPane.showMessageDialog(null, "Ícone alterado com sucesso!");
+                    jogador.setCaminhoIconeJogador("LogoBoneDT.png");
+                    persistencia.salvarCentral(central);
+                } else {
+                    JOptionPane.showMessageDialog(null,"Você não tem pontos o suficiente para utilizar esse icone!\nPontos nescessários:\nSolo: 5000pts\nCompetitivo: 20pts", "Pontos insuficientes!", JOptionPane.WARNING_MESSAGE);
+                }
             }
         });
         add(btIconeBone);
@@ -73,8 +89,13 @@ public class MiniJanelaTrocarIcone extends LayoutJanela {
         btIconeCleyton.setBounds(480,110,80,80);
         btIconeCleyton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                jogador.setCaminhoIconeJogador("LogoCleyton.png");
-                persistencia.salvarCentral(central);
+                if (jogador.getPontuacaoSolo() > 10000 || jogador.getPontuacaoComp() > 30){
+                    JOptionPane.showMessageDialog(null, "Ícone alterado com sucesso!");
+                    jogador.setCaminhoIconeJogador("LogoCleyton.png");
+                    persistencia.salvarCentral(central);
+                } else{
+                    JOptionPane.showMessageDialog(null,"Você não tem pontos o suficiente para utilizar esse icone!\nPontos nescessários:\nSolo: 10000pts\nCompetitivo: 30pts", "Pontos insuficientes!", JOptionPane.WARNING_MESSAGE);
+                }
             }
         });
         add(btIconeCleyton);
