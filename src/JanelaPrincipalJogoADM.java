@@ -1,15 +1,27 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
-public class JanelaPrincipalJogoADM extends JanelaPrincipalJogo{
-    private Jogador jogador;
-    public JanelaPrincipalJogoADM(Jogador j){
+public class JanelaPrincipalJogoADM extends JanelaPrincipalJogo {
+
+    public JanelaPrincipalJogoADM(Jogador j) {
         super(j);
-        criarBotao();
-    }
-    private void criarBotao(){
-        //Botão de Teste Klebson, pode apagar ele ou substituir por outro botão! :)
-        JButton btTeste = new JButton("Teste");
-        btTeste.setBounds(430,500,100,45);
-        add(btTeste);
+
+        JButton btGerarRelatorio = new JButton("Gerar Relatório");
+        btGerarRelatorio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                File pdf = new File("relatorio.pdf"); // ta dando erro aqui, preciso corrigir dps
+                if (!pdf.exists()) {
+                    JOptionPane.showMessageDialog(null, "PDF não encontrado em: " + pdf.getAbsolutePath());
+                    return;
+                }
+                Mensageiro.enviarComAnexo(j.getEmail(), "Relatório", "Segue seu relatório em anexo.", pdf);
+            }
+        });
+        btGerarRelatorio.setBounds(430, 500, 200, 45);
+        add(btGerarRelatorio);
+
     }
 }
+
