@@ -1,27 +1,27 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class JanelaPrincipalJogoADM extends JanelaPrincipalJogo {
-    private Jogador jogador;
 
     public JanelaPrincipalJogoADM(Jogador j) {
         super(j);
-        GerarRelatorio();
-    }
 
-    private void GerarRelatorio() {
-        //Botão de Teste Klebson, pode apagar ele ou substituir por outro botão! :)
         JButton btGerarRelatorio = new JButton("Gerar Relatório");
         btGerarRelatorio.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                CentralDeInformacoes centro = new CentralDeInformacoes();
-
-                Mensageiro.enviarMensagem(jogador.getEmail(),"Relatorio: ", GeradorDeRelatorios.gerarRelatorio(centro));
+                File pdf = new File("relatorio.pdf"); // ta dando erro aqui, preciso corrigir dps
+                if (!pdf.exists()) {
+                    JOptionPane.showMessageDialog(null, "PDF não encontrado em: " + pdf.getAbsolutePath());
+                    return;
+                }
+                Mensageiro.enviarComAnexo(j.getEmail(), "Relatório", "Segue seu relatório em anexo.", pdf);
             }
         });
-        btGerarRelatorio.setBounds(430, 500, 140, 45);
+        btGerarRelatorio.setBounds(430, 500, 200, 45);
         add(btGerarRelatorio);
 
     }
 }
+

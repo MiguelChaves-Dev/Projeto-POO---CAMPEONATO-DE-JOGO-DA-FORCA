@@ -6,25 +6,28 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import javax.swing.*;
+
+
 public class GeradorDeRelatorios {
 	public static String gerarRelatorio(CentralDeInformacoes central) {
 	        Document documento = new Document();
-	
+
 	        try {
 	            PdfWriter.getInstance(documento, new FileOutputStream("relatorio.pdf"));
 	            documento.open();
-	
+
 	            Font fonteTitulo = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD);
 	            Font fonteSecao = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
-	
+
 	            Paragraph titulo = new Paragraph("Relatório da Central de Informações", fonteTitulo);
 	            titulo.setAlignment(Element.ALIGN_CENTER);
 	            titulo.setSpacingAfter(20);
 	            documento.add(titulo);
-	
+
 	            documento.add(new Paragraph("Jogadores cadastrados", fonteSecao));
 	            documento.add(new Paragraph(" "));
-	
+
 	            if (central.getTodosJogadores().isEmpty()) {
 	                documento.add(new Paragraph("Nenhum jogador cadastrado."));
 	            } else {
@@ -35,11 +38,11 @@ public class GeradorDeRelatorios {
 							+ " | ADM: " + j.getIsADM()));
 	                 }
 	            }
-	
+
 	            documento.add(new Paragraph(" "));
 	            documento.add(new Paragraph("Palavras cadastradas", fonteSecao));
 	            documento.add(new Paragraph(" "));
-	
+
 	            if (central.getPalavras().isEmpty()) {
 	                documento.add(new Paragraph("Nenhuma palavra cadastrada."));
 	            } else {
@@ -51,11 +54,11 @@ public class GeradorDeRelatorios {
 	                        + " | Cadastro: " + p.getData()));
 	                }
 	            }
-	
-	            System.out.println("Relatório gerado com sucesso: relatorio.pdf");
-	
+
+				JOptionPane.showMessageDialog(null, "Relatório enviado com sucesso!");
+
 	        } catch (DocumentException | java.io.IOException e) {
-	            System.out.println("Erro ao gerar o relatório: " + e.getMessage());
+				JOptionPane.showMessageDialog(null, "Relatório enviado com sucesso"+ e.getMessage());
 	        } finally {
 	            if (documento.isOpen()) {
 	                documento.close();
