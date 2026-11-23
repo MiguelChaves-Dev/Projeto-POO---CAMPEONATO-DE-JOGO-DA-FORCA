@@ -1,14 +1,18 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Palavra {
     private String palavra;
     private String dica;
-    private LocalDate data;
+    private String data;
     private Dificuldade dificuldade;
 
     public Palavra(String novaPalavra, String novaDica, Dificuldade novaDificuldade){
         palavra = novaPalavra;
         dica = novaDica;
         dificuldade = novaDificuldade;
+        LocalDate dataHoje = LocalDate.now();
+        data = dataHoje.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     //Retorna a palavra
@@ -32,13 +36,8 @@ public class Palavra {
     }
 
     //Retorna a data em que a palavra foi cadastrada
-    public LocalDate getData() {
+    public String getData() {
         return data;
-    }
-
-    //Define a data que a palavra foi cadastrada
-    public void setData(LocalDate data) {
-        this.data = data;
     }
 
     //Retorna a dificuldade da palavra(FACIL, MEDIO, DIFICIL) <- (São opções do Enum: Dificuldade)

@@ -34,7 +34,7 @@ public class JanelaPrincipalJogoADM extends JanelaPrincipalJogo {
         btImportar.setFont(new Font("Comic Sans MS", Font.BOLD, 17));
         Persistencia persistencia = new Persistencia();   // grava no central.xml
         CentralDeInformacoes central = persistencia.recuperarCentral();
-        btImportar.setBounds(430, 560, 200, 45);
+        btImportar.setBounds(650, 500, 200, 45);
         btImportar.addActionListener(e -> {
             JFileChooser seletor = new JFileChooser();
             if (seletor.showOpenDialog(this) != JFileChooser.APPROVE_OPTION) {
