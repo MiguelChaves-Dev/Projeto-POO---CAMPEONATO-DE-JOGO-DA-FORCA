@@ -18,6 +18,9 @@ public class JanelaPrincipalJogoADM extends JanelaPrincipalJogo {
         btGerarRelatorio.setBounds(430, 500, 200, 45);
         btGerarRelatorio.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                Persistencia persistencia = new Persistencia();
+                CentralDeInformacoes central = persistencia.recuperarCentral();
+                GeradorDeRelatorios.gerarRelatorio(central);
                 File pdf = new File("relatorio.pdf"); // CRIOU O ARQUIVO DO RELATORIO
                 if (!pdf.exists()) { // verifica se o relatorio existe
                     JOptionPane.showMessageDialog(null, "PDF não encontrado em: " + pdf.getAbsolutePath());
