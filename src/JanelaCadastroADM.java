@@ -1,5 +1,6 @@
 import Exceptions.CamposVaziosException;
 import Exceptions.ContaRepetidaException;
+import Exceptions.EmailInvalidoException;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -87,6 +88,10 @@ public class JanelaCadastroADM extends LayoutJanela{
                 if(login.isBlank() || email.isBlank() || senha.isBlank()){
                     throw new CamposVaziosException();
                 }
+                String emailFormatado = email.toLowerCase().trim();
+                if (!emailFormatado.endsWith("@gmail.com") && !emailFormatado.endsWith("@outlook.com") && !emailFormatado.endsWith("@hotmail.com")) {
+                    throw new EmailInvalidoException();
+                }
                 if (!central.adicionarJogador(new Jogador(login, email, senha, true))){
                     throw new ContaRepetidaException();
                 }
@@ -102,7 +107,7 @@ public class JanelaCadastroADM extends LayoutJanela{
                     JOptionPane.showMessageDialog(null, "ADM cadastrado com sucesso!");
                     dispose();
                     new JanelaLogin();
-                } catch (CamposVaziosException | ContaRepetidaException ex){
+                } catch (CamposVaziosException | ContaRepetidaException | EmailInvalidoException ex){
                     JOptionPane.showMessageDialog(null, ex.getMessage(),"Atenção", JOptionPane.WARNING_MESSAGE);
                 }
             }

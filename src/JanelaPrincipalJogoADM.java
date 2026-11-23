@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -13,6 +14,8 @@ public class JanelaPrincipalJogoADM extends JanelaPrincipalJogo {
     }
     public void criarBotoes(Jogador j){
         JButton btGerarRelatorio = new JButton("Gerar Relatório");
+        btGerarRelatorio.setFont(new Font("Comic Sans MS", Font.BOLD, 17));
+        btGerarRelatorio.setBounds(430, 500, 200, 45);
         btGerarRelatorio.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 File pdf = new File("relatorio.pdf"); // CRIOU O ARQUIVO DO RELATORIO
@@ -23,18 +26,17 @@ public class JanelaPrincipalJogoADM extends JanelaPrincipalJogo {
                 Mensageiro.enviarComAnexo(j.getEmail(), "Relatório", "Segue seu relatório em anexo.", pdf);
             }
         });
-        btGerarRelatorio.setBounds(430, 500, 200, 45);
         add(btGerarRelatorio);
         JButton btImportar = new JButton("Importar Palavras");
+        btImportar.setFont(new Font("Comic Sans MS", Font.BOLD, 17));
         Persistencia persistencia = new Persistencia();   // grava no central.xml
         CentralDeInformacoes central = persistencia.recuperarCentral();
-        btImportar.setBounds(430, 560, 160, 45);
+        btImportar.setBounds(430, 560, 200, 45);
         btImportar.addActionListener(e -> {
             JFileChooser seletor = new JFileChooser();
             if (seletor.showOpenDialog(this) != JFileChooser.APPROVE_OPTION) {
                 return;
             }
-
             try {
                 String relatorio = ExtratorPalavrasCSV.importar(
                         seletor.getSelectedFile().getAbsolutePath(), central);

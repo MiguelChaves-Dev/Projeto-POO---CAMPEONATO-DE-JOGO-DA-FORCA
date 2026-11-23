@@ -39,7 +39,7 @@ public class JanelaJogo extends LayoutJanela{
         lblPalavraOculta = new JLabel(forca.getPalavraOculta(), SwingConstants.CENTER);
         lblPalavraOculta.setFont(new Font("Comic Sans MS", Font.BOLD, 52));
         lblPalavraOculta.setForeground(roxo);
-        lblPalavraOculta.setBounds(240, 60, 800, 80);
+        lblPalavraOculta.setBounds(0, 60, 1280, 80);
         add(lblPalavraOculta);
 
         lblErros = new JLabel("Erros: 0 / 6", SwingConstants.CENTER);

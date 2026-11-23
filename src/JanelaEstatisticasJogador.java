@@ -196,7 +196,11 @@ public class JanelaEstatisticasJogador extends LayoutJanela{
         btVoltar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new JanelaPrincipalJogo(jogador);
+                if(jogador.getIsADM()==true){
+                    new JanelaPrincipalJogoADM(jogador);
+                } else{
+                    new JanelaPrincipalJogo(jogador);
+                }
             }
         });
         add(btVoltar);
