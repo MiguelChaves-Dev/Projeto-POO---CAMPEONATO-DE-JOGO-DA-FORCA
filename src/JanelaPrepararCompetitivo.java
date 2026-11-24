@@ -118,6 +118,13 @@ public class JanelaPrepararCompetitivo extends LayoutJanela{
 
                     // Tenta sortear as 2 palavras antes de fechar a tela
                     Dificuldade difEscolhida = (Dificuldade) cbDificuldade.getSelectedItem();
+
+                    if(difEscolhida == Dificuldade.ESPECIAL){
+                        dispose();
+                        new JanelaSelecaoPalavrasEspecial(jogador1, jogador2, difEscolhida);
+                        return;
+                    }
+
                     ArrayList<Palavra> palavrasDuelo = central.sortearPalavrasCompetitivo(jogador1, jogador2, difEscolhida);
 
                     // Tudo certo! Abre a janela do jogo competitivo
