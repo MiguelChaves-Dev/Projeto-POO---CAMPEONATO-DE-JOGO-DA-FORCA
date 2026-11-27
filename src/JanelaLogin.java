@@ -118,7 +118,4 @@ public class JanelaLogin extends LayoutJanela{
         });
         add(btSair);
     }
-    public static void main(String[] args){
-        new JanelaLogin();
-    }
 }

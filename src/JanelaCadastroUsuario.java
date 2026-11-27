@@ -121,7 +121,4 @@ public class JanelaCadastroUsuario extends LayoutJanela{
         });
         add(btCadastrar);
     }
-    public static void main(String[] args){
-        new JanelaCadastroUsuario();
-    }
 }

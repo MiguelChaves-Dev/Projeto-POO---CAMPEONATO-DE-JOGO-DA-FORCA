@@ -114,8 +114,4 @@ public class JanelaCadastroADM extends LayoutJanela{
         });
         add(btCadastrar);
     }
-
-    public static void main(String[] args) {
-        new JanelaCadastroADM();
-    }
 }
