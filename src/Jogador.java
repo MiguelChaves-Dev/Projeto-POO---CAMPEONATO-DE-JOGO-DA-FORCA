@@ -8,7 +8,7 @@ public class Jogador {
     private boolean isADM;
     private boolean isAtivo = true;
     private ArrayList<Palavra> palavrasJogadas = new ArrayList<Palavra>();
-    private String caminhoIconeJogador = "Logo 64.png";
+    private String caminhoIconeJogador = "/Resources/Logo 64.png";
     private int pontuacaoSolo;
     private int pontuacaoComp;
 
@@ -41,7 +41,10 @@ public class Jogador {
     //Retorna o icone do jogador
     public ImageIcon getIconeJogador(){
         if(caminhoIconeJogador != null){
-            return new ImageIcon(caminhoIconeJogador);
+            java.net.URL imgURL = getClass().getResource(caminhoIconeJogador);
+            if (imgURL != null) {
+                return new ImageIcon(imgURL);
+            }
         }
         return null;
     }
